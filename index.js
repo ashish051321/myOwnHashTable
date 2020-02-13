@@ -16,7 +16,7 @@ class Hashy {
 
     get(key) {
         const index = this.hashFunction(key);
-        return typeof(this.storage[index]) == 'object' ? this.storage[index].find(item => (item[0] == key)) || null: null;
+        return typeof (this.storage[index]) == 'object' ? this.storage[index].find(item => (item[0] == key)) || null : null;
     }
 
     set(key, value) {
@@ -31,12 +31,21 @@ class Hashy {
             if (!foundIndex) { this.storage[index].push([key, value]); } else {
                 this.storage[index].splice(foundIndex, 1, [key, value]);
             }
-        }   
+        }
 
     }
-printHashTable(){
-    log(this.storage);
-}
+    printHashTable() {
+        log(this.storage);
+    }
+    
+    printAllKeys(){
+        this.storage.forEach(item =>{
+            if(typeof(item) == 'object')// it has an array which will contain atleast one key value pair
+            {
+                item.forEach(keyVal => log(keyVal[0]));
+            }
+        });
+    }
 }
 
 const h1 = new Hashy(10);
@@ -52,9 +61,12 @@ h1.set("kala", "dupatta");
 
 h1.printHashTable();
 
+log('---');
 log(h1.get("big"));
 log(h1.get("rashmi"));
 log(h1.get("bhawna"));
 log(h1.get("donald"));
 log(h1.get("manoj"));
-// We can also include some collision handling mechaism -like separate chaining ! 
+// We can also include some collision handling mechaism -like separate chaining !
+log('---');
+h1.printAllKeys();
