@@ -15,7 +15,8 @@ class Hashy {
     }
 
     get(key) {
-        return this.storage[this.hashFunction(key)].find(item => (item[0] == key));
+        const index = this.hashFunction(key);
+        return typeof(this.storage[index]) == 'object' ? this.storage[index].find(item => (item[0] == key)): null;
     }
 
     set(key, value) {
@@ -30,7 +31,7 @@ class Hashy {
             if (!foundIndex) { this.storage[index].push([key, value]); } else {
                 this.storage[index].splice(foundIndex, 1, [key, value]);
             }
-        }
+        }   
 
     }
 printHashTable(){
@@ -53,4 +54,7 @@ h1.printHashTable();
 
 log(h1.get("big"));
 log(h1.get("rashmi"));
+log(h1.get("bhawna"));
+log(h1.get("donald"));
+log(h1.get("manoj"));
 // We can also include some collision handling mechaism -like separate chaining ! 
