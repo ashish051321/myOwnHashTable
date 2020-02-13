@@ -16,7 +16,7 @@ class Hashy {
 
     get(key) {
         const index = this.hashFunction(key);
-        return typeof(this.storage[index]) == 'object' ? this.storage[index].find(item => (item[0] == key)): null;
+        return typeof(this.storage[index]) == 'object' ? this.storage[index].find(item => (item[0] == key)) || null: null;
     }
 
     set(key, value) {
@@ -42,11 +42,11 @@ printHashTable(){
 const h1 = new Hashy(10);
 h1.set("ashish", "mishra");
 h1.set("rashmi", "desai");
-h1.set("kala", "kutta");
+h1.set("paras", "chhabra");
 h1.set("big", "boss");
-h1.set("mistakenly", "yours");
+h1.set("vishal", "singh");
 h1.set("donald", "trump");
-h1.set("train", "aayi re aayi");
+h1.set("train", "ur dragon");
 
 h1.set("kala", "dupatta");
 
